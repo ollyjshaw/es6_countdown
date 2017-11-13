@@ -16,9 +16,13 @@ function solve(letters) {
     const wordChars = word.split('')
     const letterChars = letters.split('')
 
-    letterChars.forEach(function(value){
-      remove(wordChars, value)
-    })
+    for(var index=0; index<letterChars.length; index++) {
+
+      remove(wordChars, letterChars[index])
+      if (wordChars.length > letterChars.length - index) {
+        break
+      }
+    }
 
     return wordChars.length === 0
 
