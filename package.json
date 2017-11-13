@@ -1,0 +1,25 @@
+{
+  "name": "alarm_clock",
+  "description": "Will tick every second, beep every hour",
+  "repository": "ollyjshaw/es6_alarmclock.git",
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    }
+  },
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "eslint": "^4.11.0",
+    "aws-sdk": "2.149.0"
+  }
+}

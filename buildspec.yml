@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Build started on `date`
+      - echo installing eslint
+      - npm install -g eslint
+      - echo installing jest
+      - npm install -g jest
+  pre_build:
+    commands:
+      - echo installing deps
+      - npm install --production
+  build:
+    commands:
+      - echo running tests
+      - npm test
+      - echo running lint
+      - eslint *.js
+  post_build:
+    commands:
+      - echo build completed
+artifacts:
+  type: zip
+  files:
+    - Handler.js
+    - AlarmClock.js
+    - sum.js
