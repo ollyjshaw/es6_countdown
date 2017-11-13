@@ -1,6 +1,10 @@
 const all_words = [
   'zulu',
-  'accompany'
+  'accompany',
+  'refunded',
+  'company',
+  'kins',
+  'yell'
 ]
 
 function remove(array, element) {
@@ -28,21 +32,37 @@ function solve(letters) {
 
   }
 
-  return all_words.find(x => candidate(x, letters))
+  const result = all_words.find(x => candidate(x, letters))
+  if (result === undefined) {
+    return 'No match found'
+  } else {
+    return result
+  }
 }
 
 function handler(event, context, callback) {
 
   console.log(callback)
+  const letters = event.pathParameters.letters.toLowerCase()
 
-  const responseBody = solve(event.pathParameters.letters)
+  if (letters.length > 9){
+    const response = {
+      statusCode: 400,
+      body: 'String too large. 9 letters max'
+    }
+    callback(null, response)
+  } else {
 
-  const response = {
-    statusCode: 200,
-    body: responseBody
+    const responseBody = solve(letters)
+
+    const response = {
+      statusCode: 200,
+      body: responseBody
+    }
+    callback(null, response)
   }
 
-  callback(null, response)
+
 }
 
 module.exports.handler = handler
