@@ -1,9 +1,9 @@
-const myHandler = require('../src/handler')
-
+const myHandler = require('../handler')
+const FakeContex = require('./fake_context').FakeContext
 
 test('countdown solver will reject longer than 9', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'paccomnyaa'}}
   const callback = (bar, foo) => {
 
@@ -18,7 +18,7 @@ test('countdown solver will reject longer than 9', done => {
 //accompany -> accompayn
 test('countdown solver will solve  accompany', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'accompayn'}}
   const callback = (bar, foo) => {
     expect(foo.body).toBe('accompany')
@@ -30,7 +30,7 @@ test('countdown solver will solve  accompany', done => {
 
 test('countdown solver will solve nudefred', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'nudefred'}}
   const callback = (bar, foo) => {
     expect(foo.body).toBe('refunded')
@@ -43,7 +43,7 @@ test('countdown solver will solve nudefred', done => {
 //accompany -> accompayn
 test('countdown solver will solve  zulu', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'uulz'}}
   const callback = (bar, foo) => {
     expect(foo.body).toBe('zulu')
@@ -55,7 +55,7 @@ test('countdown solver will solve  zulu', done => {
 
 test('countdown solver will not find accompany due to lack of c', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'pacomnya'}}
   const callback = (bar, foo) => {
     expect(foo.body).toBe('company')
@@ -67,7 +67,7 @@ test('countdown solver will not find accompany due to lack of c', done => {
 
 test('countdown solver is not case sensitive', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'PACOMNYA'}}
   const callback = (bar, foo) => {
     expect(foo.body).toBe('company')
@@ -79,7 +79,7 @@ test('countdown solver is not case sensitive', done => {
 
 test('countdown solver does not break early', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'nnnnksi'}}
   const callback = (bar, foo) => {
     expect(foo.body).toBe('kins')
@@ -91,7 +91,7 @@ test('countdown solver does not break early', done => {
 
 test('countdown solver finds yell', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'llye'}}
   const callback = (bar, foo) => {
     expect(foo.body).toBe('yell')
@@ -103,7 +103,7 @@ test('countdown solver finds yell', done => {
 
 test('countdown solver fails gracefully', done => {
 
-  const contex = {}
+  const contex = new FakeContex()
   const request = {pathParameters:{letters:'xxxxx'}}
   const callback = (bar, foo) => {
     expect(foo.statusCode).toBe(200)

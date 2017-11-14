@@ -1,11 +1,6 @@
-const all_words = [
-  'zulu',
-  'accompany',
-  'refunded',
-  'company',
-  'kins',
-  'yell'
-]
+const all_words = require('./src/sorted').all_words
+
+let coldStart = true
 
 function remove(array, element) {
   const index = array.indexOf(element)
@@ -44,6 +39,7 @@ function handler(event, context, callback) {
 
   console.log(callback)
   const letters = event.pathParameters.letters.toLowerCase()
+  console.log('extracted letters: ' + letters)
 
   if (letters.length > 9){
     const response = {
@@ -53,11 +49,18 @@ function handler(event, context, callback) {
     callback(null, response)
   } else {
 
-    const responseBody = solve(letters)
+    const bestWord = solve(letters)
+    console.log('best word: ' + bestWord)
+
 
     const response = {
       statusCode: 200,
-      body: responseBody
+      body: bestWord
+    }
+
+    if(coldStart) {
+      console.log('Was cold start, time remaining: ' + context.getRemainingTimeInMillis())
+      coldStart = false
     }
     callback(null, response)
   }
