@@ -39,6 +39,17 @@ test('countdown solver will solve abandonde', done => {
 
 })
 
+test('countdown solver will solve froglegs', done => {
+  const contex = new FakeContex()
+  const request = {pathParameters:{letters:'froglegs'}}
+  const callback = (bar, foo) => {
+    expect(foo.body).toBe('floggers')
+    done()
+  }
+  myHandler.handler(request, contex, callback)
+
+})
+
 test('countdown solver will solve nudefred', done => {
 
   const contex = new FakeContex()

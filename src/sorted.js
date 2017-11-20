@@ -4217,6 +4217,7 @@ const all_words = [
 'flipping',
 'flirting',
 'floating',
+'floggers',
 'flogging',
 'flooding',
 'flopping',
