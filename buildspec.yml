@@ -21,8 +21,8 @@ phases:
   post_build:
     commands:
       - echo build completed
+      - aws cloudformation package --template-file samTemplate.yaml --s3-bucket grid-lambda-output --output-template-file NewSamTemplate.yaml
 artifacts:
   type: zip
   files:
-    - handler.js
-    - src/sorted.js
+    - NewSamTemplate.yaml
