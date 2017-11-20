@@ -28,6 +28,17 @@ test('countdown solver will solve  accompany', done => {
 
 })
 
+test('countdown solver will solve abandonde', done => {
+  const contex = new FakeContex()
+  const request = {pathParameters:{letters:'abandonde'}}
+  const callback = (bar, foo) => {
+    expect(foo.body).toBe('abandoned')
+    done()
+  }
+  myHandler.handler(request, contex, callback)
+
+})
+
 test('countdown solver will solve nudefred', done => {
 
   const contex = new FakeContex()
