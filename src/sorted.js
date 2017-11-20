@@ -1,5 +1,5 @@
 const all_words = [
-'bandoned',
+'abandoned',
 'abdominal',
 'abducting',
 'abduction',
