@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template for the countdown API
+Resources:
+  countdown:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: 'handler.handler'
+      Runtime: nodejs6.10
+      Description: ''
+      MemorySize: 512
+      Timeout: 3
+      Events:
+        CountdownApi:
+          Type: Api
+          Properties:
+            Path: /countdown/{letters}
+            Method: GET
