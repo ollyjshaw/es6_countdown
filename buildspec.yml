@@ -24,6 +24,5 @@ phases:
 artifacts:
   type: zip
   files:
-    - Handler.js
-    - AlarmClock.js
-    - sum.js
+    - handler.js
+    - src/sorted.js
