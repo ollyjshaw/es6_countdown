@@ -29,7 +29,7 @@ function solve(letters) {
 
   const result = all_words.find(x => candidate(x, letters))
   if (result === undefined) {
-    return 'No match found'
+    return "No match found"
   } else {
     return result
   }
