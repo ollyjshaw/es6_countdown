@@ -4,7 +4,8 @@
   "repository": "ollyjshaw/es6_alarmclock.git",
   "license": "BSD-3-Clause",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint 'handler.js' './src/**/*.js' './test/**/*.js'"
   },
   "jest": {
     "collectCoverageFrom": ["handler.js", "src/**/*.{js,jsx}"],
