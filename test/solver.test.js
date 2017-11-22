@@ -1,13 +1,13 @@
-const myHandler = require('../handler')
-const FakeContex = require('./fake_context').FakeContext
+const myHandler = require("../handler")
+const FakeContex = require("./fake_context").FakeContext
 
-test('countdown solver will reject longer than 9', done => {
+test("countdown solver will reject longer than 9", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'paccomnyaa'}}
+  const request = {pathParameters:{letters:"paccomnyaa"}}
   const callback = (bar, foo) => {
 
-    expect(foo.body).toBe('String too large. 9 letters max')
+    expect(foo.body).toBe("String too large. 9 letters max")
     expect(foo.statusCode).toBe(400)
     done()
   }
@@ -16,46 +16,46 @@ test('countdown solver will reject longer than 9', done => {
 })
 
 //accompany -> accompayn
-test('countdown solver will solve  accompany', done => {
+test("countdown solver will solve  accompany", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'accompayn'}}
+  const request = {pathParameters:{letters:"accompayn"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('accompany')
+    expect(foo.body).toBe("accompany")
     done()
   }
   myHandler.handler(request, contex, callback)
 
 })
 
-test('countdown solver will solve abandonde', done => {
+test("countdown solver will solve abandonde", done => {
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'abandonde'}}
+  const request = {pathParameters:{letters:"abandonde"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('abandoned')
+    expect(foo.body).toBe("abandoned")
     done()
   }
   myHandler.handler(request, contex, callback)
 
 })
 
-test('countdown solver will solve froglegs', done => {
+test("countdown solver will solve froglegs", done => {
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'froglegs'}}
+  const request = {pathParameters:{letters:"froglegs"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('floggers')
+    expect(foo.body).toBe("floggers")
     done()
   }
   myHandler.handler(request, contex, callback)
 
 })
 
-test('countdown solver will solve nudefred', done => {
+test("countdown solver will solve nudefred", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'nudefred'}}
+  const request = {pathParameters:{letters:"nudefred"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('refunded')
+    expect(foo.body).toBe("refunded")
     done()
   }
   myHandler.handler(request, contex, callback)
@@ -63,73 +63,73 @@ test('countdown solver will solve nudefred', done => {
 })
 
 //accompany -> accompayn
-test('countdown solver will solve  zulu', done => {
+test("countdown solver will solve  zulu", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'uulz'}}
+  const request = {pathParameters:{letters:"uulz"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('zulu')
+    expect(foo.body).toBe("zulu")
     done()
   }
   myHandler.handler(request, contex, callback)
 
 })
 
-test('countdown solver will not find accompany due to lack of c', done => {
+test("countdown solver will not find accompany due to lack of c", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'pacomnya'}}
+  const request = {pathParameters:{letters:"pacomnya"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('company')
+    expect(foo.body).toBe("company")
     done()
   }
   myHandler.handler(request, contex, callback)
 
 })
 
-test('countdown solver is not case sensitive', done => {
+test("countdown solver is not case sensitive", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'PACOMNYA'}}
+  const request = {pathParameters:{letters:"PACOMNYA"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('company')
+    expect(foo.body).toBe("company")
     done()
   }
   myHandler.handler(request, contex, callback)
 
 })
 
-test('countdown solver does not break early', done => {
+test("countdown solver does not break early", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'nnnnksi'}}
+  const request = {pathParameters:{letters:"nnnnksi"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('kins')
+    expect(foo.body).toBe("kins")
     done()
   }
   myHandler.handler(request, contex, callback)
 
 })
 
-test('countdown solver finds yell', done => {
+test("countdown solver finds yell", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'llye'}}
+  const request = {pathParameters:{letters:"llye"}}
   const callback = (bar, foo) => {
-    expect(foo.body).toBe('yell')
+    expect(foo.body).toBe("yell")
     done()
   }
   myHandler.handler(request, contex, callback)
 
 })
 
-test('countdown solver fails gracefully', done => {
+test("countdown solver fails gracefully", done => {
 
   const contex = new FakeContex()
-  const request = {pathParameters:{letters:'xxxxx'}}
+  const request = {pathParameters:{letters:"xxxxx"}}
   const callback = (bar, foo) => {
     expect(foo.statusCode).toBe(200)
-    expect(foo.body).toBe('No match found')
+    expect(foo.body).toBe("No match found")
     done()
   }
   myHandler.handler(request, contex, callback)
