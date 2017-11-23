@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "1.0"
-  title: "countdown-stack"
+  title: "countdown-stack-swagger"
 host: "el1lwut6el.execute-api.eu-west-2.amazonaws.com"
 basePath: "/Prod"
 schemes:
