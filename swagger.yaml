@@ -1,17 +1,17 @@
-swagger: "2.0"
+swagger: 2.0
 info:
-  version: "1.0"
-  title: "countdown-stack"
+  version: 1.0
+  title: countdown-stack
   description: Returns closest match to jumbled letters.
-basePath: "/Prod"
+basePath: /Prod
 schemes:
-- "https"
+- https
 paths:
   /countdown/{letters}:
     get:
       responses: {}
       x-amazon-apigateway-integration:
-        uri: "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:613053500835:function:${stageVariables.LambdaFunctionName}/invocations"
-        passthroughBehavior: "when_no_match"
-        httpMethod: "POST"
-        type: "aws_proxy"
+        uri: arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:613053500835:function:${stageVariables.LambdaFunctionName}/invocations
+        passthroughBehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
