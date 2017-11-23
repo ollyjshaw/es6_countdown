@@ -2,13 +2,23 @@ swagger: 2.0
 info:
   version: 1.0
   title: countdown-stack
-  description: Returns closest match to jumbled letters.
+  description: Returns closest match to jumbled letters. 1
 basePath: /Prod
 schemes:
 - https
 paths:
   /countdown/{letters}:
     get:
+      summary: solves conundrum
+      description: Returns closest match to jumbled letters.
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: letters
+          description: jumbled letters, valid input is /^[a-z]{9}$/.
+          required: true
+          type: string
       responses: {}
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:613053500835:function:${stageVariables.LambdaFunctionName}/invocations
