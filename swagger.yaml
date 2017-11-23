@@ -1,58 +1,17 @@
-swagger: '2.0'
-host: el1lwut6el.execute-api.eu-west-2.amazonaws.com
-basePath: /prod
-schemes:
-  - https
+swagger: "2.0"
 info:
-  description: This is a simple API
-  version: 1.0.0
-  title: Simple Inventory API
+  version: "1.0"
+  title: "countdown-stack"
+host: "el1lwut6el.execute-api.eu-west-2.amazonaws.com"
+basePath: "/Prod"
+schemes:
+- "https"
 paths:
   /countdown/{letters}:
     get:
-      summary: solves conundrum
-      description: Returns closest match to jumbled letters.
-      produces:
-        - application/json
-      parameters:
-        - in: path
-          name: letters
-          description: jumbled letters, valid input is /^[a-z]{9}$/.
-          required: true
-          type: string
-      responses:
-        '200':
-          description: solved conundrum
-          schema:
-            "$ref" : "#/definitions/SolvedConundrum"
-        '400':
-          description: input not valid
-        '404':
-          description: could not be solved
+      responses: {}
       x-amazon-apigateway-integration:
-        uri: arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:6130-5350-0835:function:${stageVariables.LambdaFunctionName}/invocations
-        passthroughBehavior: when_no_match
-        httpMethod: POST
-        type: aws
-        responses:
-          default:
-            statusCode: 200
-              responseTemplates:
-                application/json: #set ($root=$input.path('$')) { \"word\": \"$root.word\", \"length\": \"$root.length\"}
-          400:
-            statusCode: 400
-          404:
-            statusCode: 404
-definitions:
-  SolvedConundrum:
-    type: object
-    required:
-      - word
-      - length
-    properties:
-        word:
-          type: string
-        length:
-          type: integer
-        lettersNotUsed:
-          type: string
+        uri: "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:613053500835:function:countdown-stack-countdown-1CDUB0MRLY8WH/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
