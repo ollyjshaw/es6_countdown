@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   version: "1.0"
   title: "countdown-stack"
-host: "el1lwut6el.execute-api.eu-west-2.amazonaws.com"
+  description: Returns closest match to jumbled letters.
 basePath: "/Prod"
 schemes:
 - "https"
