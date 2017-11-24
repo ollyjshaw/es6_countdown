@@ -55,10 +55,10 @@ function handler(event, context, callback) {
     } else {
       response = {
         statusCode: 200,
-        body: {
-          "word": bestWord,
-          "length": bestWord.length
-        }
+        body: JSON.stringify({
+          word: bestWord,
+          length: bestWord.length
+        })
       }
     }
     console.log(response)
