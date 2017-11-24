@@ -35,7 +35,7 @@ function handler(event, context, callback) {
   const letters = event.pathParameters.letters.toLowerCase()
   console.log(`extracted letters: ${letters}`)
 
-  if (letters.length > 9){
+  if (letters.length > 9) {
     const response = {
       statusCode: 400,
       body: "String too large. 9 letters max"
