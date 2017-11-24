@@ -24,15 +24,9 @@ function solve(letters) {
     }
 
     return wordChars.length === 0
-
   }
 
-  const result = all_words.find(x => candidate(x, letters))
-  if (result === undefined) {
-    return "No match found"
-  } else {
-    return result
-  }
+  return all_words.find(x => candidate(x, letters))
 }
 
 function handler(event, context, callback) {
@@ -52,11 +46,22 @@ function handler(event, context, callback) {
     const bestWord = solve(letters)
     console.log(`best word: ${bestWord}`)
 
-
-    const response = {
-      statusCode: 200,
-      body: bestWord
+    let response
+    if (bestWord === undefined) {
+      response = {
+        statusCode: 204,
+        body: {}
+      }
+    } else {
+      response = {
+        statusCode: 200,
+        body: {
+          "word": bestWord,
+          "length": bestWord.length
+        }
+      }
     }
+    console.log(response)
 
     if(coldStart) {
       console.log(`Was cold start, time remaining: ${context.getRemainingTimeInMillis()}`)
