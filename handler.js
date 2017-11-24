@@ -70,7 +70,6 @@ function handler(event, context, callback) {
     callback(null, response)
   }
 
-
 }
 
 module.exports.handler = handler
