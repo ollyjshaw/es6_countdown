@@ -22,9 +22,15 @@ Resources:
       MemorySize: 512
       Timeout: 3
       Events:
-        CountdownApi:
+        CountdownPathApi:
           Type: Api
           Properties:
             RestApiId: !Ref ApiGatewayApi
             Path: /countdown/{letters}
+            Method: GET
+        CountdownQueryApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /countdown
             Method: GET

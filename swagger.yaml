@@ -29,6 +29,28 @@ paths:
         passthroughBehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
+  /countdown:
+    get:
+      summary: solves conundrum
+      description: Returns closest match to jumbled letters.
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: letters
+          description: jumbled letters, valid input is /^[a-z]{9}$/.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: solved conundrum
+          schema:
+            "$ref" : "#/definitions/SolvedConundrum"
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:613053500835:function:${stageVariables.LambdaFunctionName}/invocations
+        passthroughBehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
 definitions:
   SolvedConundrum:
     type: object
