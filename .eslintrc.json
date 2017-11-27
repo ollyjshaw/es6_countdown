@@ -12,6 +12,16 @@
         "no-console": [
             0
         ],
+        "no-multiple-empty-lines":[
+            "error",
+            {
+                "max":1
+            }
+        ],
+        "brace-style":[
+            "error",
+            "1tbs"
+        ],
         "indent": [
             "error",
             2
@@ -22,7 +32,7 @@
         ],
         "quotes": [
             "error",
-            "single"
+            "double"
         ],
         "semi": [
             "error",

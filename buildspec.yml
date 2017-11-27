@@ -15,9 +15,9 @@ phases:
   build:
     commands:
       - echo running tests
-      - npm test
+      - jest --coverage
       - echo running lint
-      - eslint *.js
+      - npm run lint
   post_build:
     commands:
       - echo build completed
