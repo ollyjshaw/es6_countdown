@@ -153,3 +153,37 @@ test("countdown solver fails gracefully", done => {
   myHandler.handler(request, context, callback)
 
 })
+
+test("countdown solver uses query params", done => {
+  const context = new FakeContext()
+  const request = {queryStringParameters:{letters:"accompayn"}}
+  const callback = (bar, foo) => {
+    expect(foo.statusCode).toEqual(200)
+    expect(JSON.parse(foo.body).word).toEqual("accompany")
+    expect(JSON.parse(foo.body).length).toEqual(9)    
+    done()
+  }
+  myHandler.handler(request, context, callback)
+})
+
+test("countdown solver fails with invalid query input", done => {
+  const context = new FakeContext()
+  const request = {queryStringParameters:{}}
+  const callback = (bar, foo) => {
+    expect(foo.body).toBe("Input not valid")
+    expect(foo.statusCode).toEqual(400)
+    done()
+  }
+  myHandler.handler(request, context, callback)
+})
+
+test("countdown solver fails with invalid path input", done => {
+  const context = new FakeContext()
+  const request = {pathParameters:{}}
+  const callback = (bar, foo) => {
+    expect(foo.body).toBe("Input not valid")
+    expect(foo.statusCode).toEqual(400)
+    done()
+  }
+  myHandler.handler(request, context, callback)
+})

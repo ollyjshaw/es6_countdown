@@ -31,9 +31,24 @@ function solve(letters) {
 
 function handler(event, context, callback) {
 
-  console.log(callback)
-  const letters = event.pathParameters.letters.toLowerCase()
-  console.log(`extracted letters: ${letters}`)
+  let letters = ""
+  if (event.queryStringParameters !== null && event.queryStringParameters !== undefined) {
+    if (event.queryStringParameters.letters !== undefined &&
+        event.queryStringParameters.letters !== null &&
+        event.queryStringParameters.letters !== "") {
+      console.log("Received letters via query string: " + event.queryStringParameters.letters)
+      letters = event.queryStringParameters.letters
+    }
+  }
+
+  if (event.pathParameters !== null && event.pathParameters !== undefined) {
+    if (event.pathParameters.letters !== undefined && 
+        event.pathParameters.letters !== null && 
+        event.pathParameters.letters !== "") {
+      console.log("Received letters via path: " + event.pathParameters.letters)
+      letters = event.pathParameters.letters.toLowerCase()
+    }
+  }
 
   if (letters.length > 9) {
     const response = {
@@ -41,8 +56,13 @@ function handler(event, context, callback) {
       body: "String too large. 9 letters max"
     }
     callback(null, response)
+  } else if (letters.length == 0) {
+    const response = {
+      statusCode: 400,
+      body: "Input not valid"
+    }
+    callback(null, response)
   } else {
-
     const bestWord = solve(letters)
     console.log(`best word: ${bestWord}`)
 
