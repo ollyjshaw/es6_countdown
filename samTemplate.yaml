@@ -34,3 +34,9 @@ Resources:
             RestApiId: !Ref ApiGatewayApi
             Path: /countdown
             Method: GET
+        CountdownBodyApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /countdown
+            Method: POST

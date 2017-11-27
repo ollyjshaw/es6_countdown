@@ -31,6 +31,7 @@ function solve(letters) {
 
 function handler(event, context, callback) {
 
+  console.log("request: " + JSON.stringify(event))
   let letters = ""
   if (event.queryStringParameters !== null && event.queryStringParameters !== undefined) {
     if (event.queryStringParameters.letters !== undefined &&
@@ -48,6 +49,12 @@ function handler(event, context, callback) {
       console.log("Received letters via path: " + event.pathParameters.letters)
       letters = event.pathParameters.letters.toLowerCase()
     }
+  }
+
+  if (event.body !== null && event.body !== undefined) {
+    let body = JSON.parse(event.body)
+    if (body.letters)
+      letters = body.letters
   }
 
   if (letters.length > 9) {
