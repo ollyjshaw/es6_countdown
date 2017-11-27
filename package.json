@@ -1,10 +1,11 @@
 {
-  "name": "alarm_clock",
-  "description": "Will tick every second, beep every hour",
-  "repository": "ollyjshaw/es6_alarmclock.git",
+  "name": "countdown",
+  "description": "given a set of letters it will return the closest matched word",
+  "repository": "gridsmartercities/es6_countdown.git",
   "license": "BSD-3-Clause",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint 'handler.js' './src/**/*.js' './test/**/*.js'"
   },
   "jest": {
     "collectCoverageFrom": ["handler.js", "src/**/*.{js,jsx}"],
