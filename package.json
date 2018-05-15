@@ -7,7 +7,10 @@
     "test": "jest"
   },
   "jest": {
-    "collectCoverageFrom": ["handler.js", "src/**/*.{js,jsx}"],
+    "collectCoverageFrom": [
+      "handler.js",
+      "src/**/*.{js,jsx}"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 95,
