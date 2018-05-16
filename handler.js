@@ -16,7 +16,6 @@ function solve(letters) {
     const letterChars = letters.split('')
 
     for(var index=0; index<letterChars.length; index++) {
-
       remove(wordChars, letterChars[index])
       if (wordChars.length > letterChars.length - index) {
         break
@@ -37,9 +36,7 @@ function solve(letters) {
 
 function handler(event, context, callback) {
 
-  console.log(callback)
   const letters = event.pathParameters.letters.toLowerCase()
-  console.log('extracted letters: ' + letters)
 
   if (letters.length > 9){
     const response = {
@@ -50,8 +47,6 @@ function handler(event, context, callback) {
   } else {
 
     const bestWord = solve(letters)
-    console.log('best word: ' + bestWord)
-
 
     const response = {
       statusCode: 200,
